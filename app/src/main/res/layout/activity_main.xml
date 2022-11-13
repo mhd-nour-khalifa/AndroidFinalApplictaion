@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#ECECEC"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/page_title"
+            android:textAlignment="center"
+            android:textColor="#00138F"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/studentId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textColor="#0E0D0D"
+            android:backgroundTint="#606060"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:maxLength="11"
+            android:hint="@string/studentId_hint" />
+
+        <EditText
+            android:id="@+id/studentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:backgroundTint="#606060"
+            android:textColor="#0E0D0D"
+            android:textAlignment="center"
+            android:hint="@string/studentName_hint" />
+
+        <EditText
+            android:id="@+id/studentLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textColor="#0E0D0D"
+            android:backgroundTint="#606060"
+            android:textAlignment="center"
+            android:hint="@string/studentSurname_hint" />
+
+        <!-- Students Date code for signal touch edit text date picker enable when click -->
+        <EditText
+            android:id="@+id/studentBirthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#606060"
+            android:textSize="18sp"
+            android:textColor="#0E0D0D"
+            android:textAlignment="center"
+            android:hint="@string/studentBirthDate_hint"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:id="@+id/birthPlaceHint"
+            android:text="@string/birthPlace_hint"
+            android:textColor="#000788" />
+
+        <!-- spinner For Birth Place -->
+        <Spinner
+            android:id="@+id/spinnerBirthPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/birthPlace_hint"
+            android:inputType="none"
+            android:textColor="#0E0D0D"
+            android:padding="16dp"
+            tools:contextClickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/genderHint"
+            android:text="@string/gender_hint"
+            android:textSize="16sp"
+            android:textColor="#000788" />
+
+        <!-- Here we have Gender radio buttons -->
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/genderRadioGrp"
+            android:gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/maleRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#0E0D0D"
+                android:layout_marginLeft="10dp"
+                android:text="@string/studentGenderMale_hint" />
+
+            <RadioButton
+                android:id="@+id/femaleRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#0E0D0D"
+                android:layout_marginLeft="10dp"
+                android:text="@string/studentGenderFemale_hint" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/faculty_hint"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:id="@+id/facultyHint"
+            android:textColor="#000788" />
+
+        <!-- spinner For Faculity-->
+        <Spinner
+            android:id="@+id/spinnerFaculty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textColor="#0E0D0D"
+            android:padding="16dp"
+            tools:contextClickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/department_hint"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:id="@+id/departmentHint"
+            android:textColor="#000788" />
+
+        <!-- spinner For Department-->
+        <Spinner
+            android:id="@+id/spinnerDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="#0E0D0D"
+            android:inputType="none" />
+
+        <EditText
+            android:id="@+id/studentGPA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#606060"
+            android:textColor="#0E0D0D"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:inputType="numberDecimal"
+            android:hint="@string/studentGPA_hint" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/scholarshipHint"
+            android:textSize="16sp"
+            android:text="@string/scholarship_hint"
+            android:textColor="#000788" />
+
+        <!-- Here we have Scholarship radio buttons -->
+        <RadioGroup
+            android:id="@+id/scholarshipRadioGrp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/scholarshipFull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="#0E0D0D"
+                android:textSize="16sp"
+                android:text="@string/studentScholarshipFull_hint" />
+
+            <RadioButton
+                android:id="@+id/scholarshipHalf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="#0E0D0D"
+                android:textSize="16sp"
+                android:text="@string/studentScholarshipHalf_hint" />
+
+            <RadioButton
+                android:id="@+id/scholarshipNone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#0E0D0D"
+                android:layout_marginLeft="10dp"
+                android:text="@string/studentScholarshipNone_hint" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="286dp"
+            android:textSize="16sp"
+            android:textColor="#0E0D0D"
+            android:layout_height="wrap_content"
+            android:text="@string/notnecessary_hint" />
+
+        <EditText
+            android:id="@+id/additionalInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#606060"
+            android:textColor="#0E0D0D"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="invisible"
+            android:hint="@string/additionalInfo_hint"/>
+
+        <TextView
+            android:id="@+id/submission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#606060"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="invisible" />
+
+        <!-- Here we have buttons -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="39dp"
+                android:textSize="16sp"
+                android:backgroundTint="#2196F3"
+                android:text="@string/buttonSubmit_hint" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_height="39dp"
+                android:textSize="16sp"
+                android:backgroundTint="#2196F3"
+                android:text="@string/buttonReset_hint" />
+
+            <Button
+                android:id="@+id/btnExit"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:backgroundTint="#2196F3"
+                android:text="@string/buttonExit_hint" />
+        </TableRow>
+    </LinearLayout>
+</ScrollView>
