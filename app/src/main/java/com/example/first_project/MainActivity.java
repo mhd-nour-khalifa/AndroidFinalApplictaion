@@ -116,25 +116,30 @@ public class MainActivity extends AppCompatActivity {
         departmentSpinner = findViewById(R.id.spinnerDepartment);
         birthPlaceSpinner = findViewById(R.id.spinnerBirthPlace);
 
-        final String [] faculty = {"Business","Engineering and Natural Sciences"};
-        final String [] departmentOfBusiness = {"","Business Administration", "Management Information Systems","International Finance","International Trade and Business"};
-        final String [] departmentOfEngineering = {"","Civil Engineering","Computer Engineering" ,"Computer Science","Electrical and Electronics"};
+        String [] faculty = {"","Business","Engineering and Natural Sciences","Architecture"};
+        String [] departmentOfBusiness = {"","Business Administration", "Management Information Systems","International Finance","International Trade and Business"};
+        String [] departmentOfEngineering = {"","Civil Engineering","Computer Engineering" ,"Computer Science","Electrical and Electronics"};
+        String [] departmentOfArchitecture = {"","Architecture","Industrial Design" ,"Interior Design"};
 
         ArrayAdapter<String> facultyAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, faculty);
-        final ArrayAdapter<String> departmentOfBusinessAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfBusiness);
-        final ArrayAdapter<String> departmentOfEngineeringAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfEngineering);
-        final ArrayAdapter birthPlaceAdapter = ArrayAdapter.createFromResource(this,R.array.tr_city_number, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> departmentOfBusinessAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfBusiness);
+        ArrayAdapter<String> departmentOfEngineeringAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfEngineering);
+        ArrayAdapter<String> departmentOfArchitectureAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfArchitecture);
+
+        ArrayAdapter birthPlaceAdapter = ArrayAdapter.createFromResource(this,R.array.tr_city_number, android.R.layout.simple_spinner_dropdown_item);
 
         facultySpinner.setAdapter(facultyAdapter);
         // Spinner Toast This callback is invoked only when the newly selected position is different from the previously selected position or if there was no selected item.
         facultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                if (position == 0 ) {
+                if (position == 1 ) {
                     departmentSpinner.setAdapter(departmentOfBusinessAdapter);
 
-                } else {
+                } if(position == 2) {
                     departmentSpinner.setAdapter(departmentOfEngineeringAdapter);
+                }if (position ==3){
+                    departmentSpinner.setAdapter(departmentOfArchitectureAdapter);
                 }
             }
 
@@ -191,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Exit Button
         exitBtn = findViewById(R.id.btnExit);
         exitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Reset Button
         resetBtn = findViewById(R.id.btnReset);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
