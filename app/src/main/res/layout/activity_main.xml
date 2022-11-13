@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,6 +13,12 @@
         android:padding="16dp"
         android:background="#ECECEC"
         tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            app:srcCompat="@drawable/bilgi" />
 
         <TextView
             android:layout_width="match_parent"
@@ -75,13 +82,14 @@
             android:focusableInTouchMode="false" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/birthPlaceHint"
+            android:layout_width="376dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="16sp"
-            android:id="@+id/birthPlaceHint"
+            android:background="@drawable/rounded_corner"
             android:text="@string/birthPlace_hint"
-            android:textColor="#000788" />
+            android:textColor="#063478"
+            android:textSize="16sp" />
 
         <!-- spinner For Birth Place -->
         <Spinner
@@ -95,13 +103,14 @@
             tools:contextClickable="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/genderHint"
+            android:layout_width="376dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:id="@+id/genderHint"
+            android:background="@drawable/rounded_corner"
             android:text="@string/gender_hint"
-            android:textSize="16sp"
-            android:textColor="#000788" />
+            android:textColor="#000788"
+            android:textSize="16sp" />
 
         <!-- Here we have Gender radio buttons -->
         <RadioGroup
@@ -132,11 +141,12 @@
         </RadioGroup>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="376dp"
             android:layout_height="wrap_content"
             android:text="@string/faculty_hint"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
+            android:background="@drawable/rounded_corner"
             android:id="@+id/facultyHint"
             android:textColor="#000788" />
 
@@ -151,11 +161,12 @@
             tools:contextClickable="true" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="376dp"
             android:layout_height="wrap_content"
             android:text="@string/department_hint"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
+            android:background="@drawable/rounded_corner"
             android:id="@+id/departmentHint"
             android:textColor="#000788" />
 
@@ -168,25 +179,37 @@
             android:textColor="#0E0D0D"
             android:inputType="none" />
 
+        <TextView
+            android:layout_width="376dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/StudentGpa_txt"
+            android:background="@drawable/rounded_corner"
+            android:textColor="#000788"
+            android:textSize="16sp"
+            android:translationY="-10dp" />
+
         <EditText
             android:id="@+id/studentGPA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="#606060"
-            android:textColor="#0E0D0D"
-            android:textAlignment="center"
-            android:textSize="18sp"
+            android:hint="@string/studentGPA_hint"
             android:inputType="numberDecimal"
-            android:hint="@string/studentGPA_hint" />
+            android:textAlignment="center"
+            android:textColor="#0E0D0D"
+            android:textSize="18sp"
+            android:translationY="-28dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="376dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:id="@+id/scholarshipHint"
             android:textSize="16sp"
             android:text="@string/scholarship_hint"
+            android:background="@drawable/rounded_corner"
             android:textColor="#000788" />
 
         <!-- Here we have Scholarship radio buttons -->
@@ -288,5 +311,6 @@
                 android:backgroundTint="#2196F3"
                 android:text="@string/buttonExit_hint" />
         </TableRow>
+
     </LinearLayout>
 </ScrollView>

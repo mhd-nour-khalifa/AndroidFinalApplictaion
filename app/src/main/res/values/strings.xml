@@ -1,15 +1,13 @@
 <resources>
     <string name="app_name">First_Project</string>
     <string name="page_title">Registration Students</string>
-    <string name="studentId_text">ID:</string>
     <string name="studentId_hint">ID</string>
     <string name="studentName_hint">First Name</string>
-    <string name="studentName_text">First Name:</string>
     <string name="studentSurname_hint">Last Name</string>
     <string name="studentBirthDate_hint">Birth Date</string>
     <string name="studentGenderMale_hint">Male</string>
     <string name="studentGenderFemale_hint">Female</string>
-    <string name="Gpa_txt">Gpa</string>
+    <string name="StudentGpa_txt">Gpa</string>
     <string name="studentGPA_hint">GPA</string>
     <string name="birthPlace_hint">Birth Place</string>
     <string name="gender_hint">Gender</string>
