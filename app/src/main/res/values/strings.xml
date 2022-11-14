@@ -20,7 +20,7 @@
     <string name="buttonExit_hint">Exit</string>
     <string name="buttonReset_hint">Reset</string>
     <string name="buttonSubmit_hint">Submit</string>
-    <string name="notnecessary_hint">Not Necessary</string>
+    <string name="notnecessary_hint">Additional Info</string>
     <string name="additionalInfo_hint">Additional Info</string>
 
 
