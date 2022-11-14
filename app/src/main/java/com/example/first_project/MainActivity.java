@@ -136,13 +136,23 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////////End OF Spinner Department and Facilty///////////////////////////////////////////////////
 
         //limits decimal palaces for Gpa
-        InputFilter filter = new InputFilter() {
+         InputFilter filter = new InputFilter() {
             final int maxDigitsBeforeDecimalPoint=1;
             final int maxDigitsAfterDecimalPoint=2;
+            final double min=0.0;
+            final double max=4.0;
 
             @Override
             public CharSequence filter(CharSequence source, int start, int end,
                                        Spanned dest, int dstart, int dend) {
+
+                Double input = 0.0;
+                try {
+                    input = Double.parseDouble(dest.subSequence(0, dstart).toString() + source + dest.subSequence(dend, dest.length()));
+                } catch (NumberFormatException nfe) { }
+
+                if (!isInRange(min, max, input))
+                    return "";
 
                 StringBuilder builder = new StringBuilder(dest);
                 builder.replace(dstart, dend, source.subSequence(start, end).toString());
@@ -153,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
                         return dest.subSequence(dstart, dend);
                     return "";
                 }
+
                 return null;
             }
         };
-        studentGpaField.setFilters(new InputFilter[] { filter });
         ///////////////////////////////////////////////End OF Gpa Decimal///////////////////////////////////////////////////
 
         //Initialize birthplace and getting adaptor array resource from string xml
@@ -407,5 +417,8 @@ public class MainActivity extends AppCompatActivity {
         dateField.setText(dateFormat.format(myCalendar.getTime()));
     }
     ///////////////////////////////////////////////End OFCalender///////////////////////////////////////////////////
-
+    
+     private boolean isInRange(double a, double b, double c) {
+        return b > a ? c >= a && c <= b : c >= b && c <= a;
+    }
 }
