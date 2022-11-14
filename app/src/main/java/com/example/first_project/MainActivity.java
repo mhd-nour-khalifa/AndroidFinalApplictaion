@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     EditText dateField, studentIdField, studentNameField, studentLastNameField, studentGpaField, additionInfoField;
     Spinner departmentSpinner, facultySpinner, birthPlaceSpinner;
-    TextView submittedTxt, genderTxt, facultyTxt, departmentTxt, scholarshipTxt;
+    TextView submittedTxt, genderTxt, facultyTxt, departmentTxt, scholarshipTxt,birthPlaceTxt;;
     Button exitBtn, resetBtn, submitBtn;
     RadioGroup genderRadioGroup, scholarshipRadioGroup;
     RadioButton maleBtn, femaleBtn, fullBtn, halfBtn, noneBtn;
     CheckBox additionalReqCheckBox;
 
     int cityPlateNum;
-
     String[] cityArray = {};
 
     @Override
@@ -60,8 +59,83 @@ public class MainActivity extends AppCompatActivity {
         studentLastNameField = findViewById(R.id.studentLastName);
         studentGpaField = findViewById(R.id.studentGPA);
         additionInfoField = findViewById(R.id.additionalInfo);
+        birthPlaceTxt = findViewById(R.id.birthPlaceHint);
 
-        //limits decimal palaces
+
+        submittedTxt = findViewById(R.id.submission);
+        departmentTxt = findViewById(R.id.departmentHint);
+        genderTxt = findViewById(R.id.genderHint);
+        facultyTxt = findViewById(R.id.facultyHint);
+        scholarshipTxt = findViewById(R.id.scholarshipHint);
+
+        genderRadioGroup = findViewById(R.id.genderRadioGrp);
+        scholarshipRadioGroup = findViewById(R.id.scholarshipRadioGrp);
+
+        maleBtn = findViewById(R.id.maleRadioBtn);
+        femaleBtn = findViewById(R.id.femaleRadioBtn);
+        fullBtn = findViewById(R.id.scholarshipFull);
+        halfBtn = findViewById(R.id.scholarshipHalf);
+        noneBtn = findViewById(R.id.scholarshipNone);
+
+        additionalReqCheckBox = findViewById(R.id.checkBox);
+
+
+
+        // CheckBox for visbility and Disbility
+        additionalReqCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    additionInfoField.setVisibility(View.VISIBLE);
+                } else {
+                    additionInfoField.setVisibility(View.GONE);
+                }
+            }
+        });
+        ///////////////////////////////////////////////End OF CheckBox Visibility///////////////////////////////////////////////////
+
+
+        // Initialize spinner and getting adaptor array resource from string xml
+        facultySpinner = findViewById(R.id.spinnerFaculty);
+        departmentSpinner = findViewById(R.id.spinnerDepartment);
+
+        String [] faculty = {"","Business","Engineering and Natural Sciences","Architecture"};
+        String [] departmentOfBusiness = {"","Business Administration", "Management Information Systems","International Finance","International Trade and Business"};
+        String [] departmentOfEngineering = {"","Civil Engineering","Computer Engineering" ,"Computer Science","Electrical and Electronics"};
+        String [] departmentOfArchitecture = {"","Architecture","Industrial Design" ,"Interior Design"};
+
+        ArrayAdapter<String> facultyAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, faculty);
+
+        ArrayAdapter<String> departmentOfBusinessAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item,
+                departmentOfBusiness);
+        ArrayAdapter<String> departmentOfEngineeringAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item,
+                departmentOfEngineering);
+        ArrayAdapter<String> departmentOfArchitectureAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item,
+                departmentOfArchitecture);
+
+
+        facultySpinner.setAdapter(facultyAdapter);
+        // Spinner Toast This callback is invoked only when the newly selected position is different from the previously selected position or if there was no selected item.
+        facultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                if (position == 1 ) {
+                    departmentSpinner.setAdapter(departmentOfBusinessAdapter);
+
+                } if(position == 2) {
+                    departmentSpinner.setAdapter(departmentOfEngineeringAdapter);
+                }if (position ==3){
+                    departmentSpinner.setAdapter(departmentOfArchitectureAdapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        ///////////////////////////////////////////////End OF Spinner Department and Facilty///////////////////////////////////////////////////
+
+        //limits decimal palaces for Gpa
         InputFilter filter = new InputFilter() {
             final int maxDigitsBeforeDecimalPoint=1;
             final int maxDigitsAfterDecimalPoint=2;
@@ -83,70 +157,12 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         studentGpaField.setFilters(new InputFilter[] { filter });
+        ///////////////////////////////////////////////End OF Gpa Decimal///////////////////////////////////////////////////
 
-        submittedTxt = findViewById(R.id.submission);
-        departmentTxt = findViewById(R.id.departmentHint);
-        genderTxt = findViewById(R.id.genderHint);
-        facultyTxt = findViewById(R.id.facultyHint);
-        scholarshipTxt = findViewById(R.id.scholarshipHint);
-
-        genderRadioGroup = findViewById(R.id.genderRadioGrp);
-        scholarshipRadioGroup = findViewById(R.id.scholarshipRadioGrp);
-
-        maleBtn = findViewById(R.id.maleRadioBtn);
-        femaleBtn = findViewById(R.id.femaleRadioBtn);
-        fullBtn = findViewById(R.id.scholarshipFull);
-        halfBtn = findViewById(R.id.scholarshipHalf);
-        noneBtn = findViewById(R.id.scholarshipNone);
-
-        additionalReqCheckBox = findViewById(R.id.checkBox);
-        additionalReqCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (compoundButton.isChecked()) {
-                    additionInfoField.setVisibility(View.VISIBLE);
-                } else {
-                    additionInfoField.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        // Initialize spinner and getting adaptor array resource from string xml
-        facultySpinner = findViewById(R.id.spinnerFaculty);
-        departmentSpinner = findViewById(R.id.spinnerDepartment);
-        birthPlaceSpinner = findViewById(R.id.spinnerBirthPlace);
-
-        String [] faculty = {"","Business","Engineering and Natural Sciences","Architecture"};
-        String [] departmentOfBusiness = {"","Business Administration", "Management Information Systems","International Finance","International Trade and Business"};
-        String [] departmentOfEngineering = {"","Civil Engineering","Computer Engineering" ,"Computer Science","Electrical and Electronics"};
-        String [] departmentOfArchitecture = {"","Architecture","Industrial Design" ,"Interior Design"};
-
-        ArrayAdapter<String> facultyAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, faculty);
-        ArrayAdapter<String> departmentOfBusinessAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfBusiness);
-        ArrayAdapter<String> departmentOfEngineeringAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfEngineering);
-        ArrayAdapter<String> departmentOfArchitectureAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_dropdown_item, departmentOfArchitecture);
-
+        //Initialize birthplace and getting adaptor array resource from string xml
         ArrayAdapter birthPlaceAdapter = ArrayAdapter.createFromResource(this,R.array.tr_city_number, android.R.layout.simple_spinner_dropdown_item);
 
-        facultySpinner.setAdapter(facultyAdapter);
-        // Spinner Toast This callback is invoked only when the newly selected position is different from the previously selected position or if there was no selected item.
-        facultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                if (position == 1 ) {
-                    departmentSpinner.setAdapter(departmentOfBusinessAdapter);
-
-                } if(position == 2) {
-                    departmentSpinner.setAdapter(departmentOfEngineeringAdapter);
-                }if (position ==3){
-                    departmentSpinner.setAdapter(departmentOfArchitectureAdapter);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
+        birthPlaceSpinner = findViewById(R.id.spinnerBirthPlace);
 
         birthPlaceSpinner.setAdapter(birthPlaceAdapter);
         birthPlaceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -159,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+        ///////////////////////////////////////////////End OF Birth Place ///////////////////////////////////////////////////
+
 
         /*int city = (int) birthPlaceSpinner.getSelectedItemId();
         String[] city_id = getResources().getStringArray(R.array.tr_city);
@@ -190,11 +208,14 @@ public class MainActivity extends AppCompatActivity {
         dateField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog dialog =  new DatePickerDialog(MainActivity.this,date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+                DatePickerDialog dialog =  new DatePickerDialog(MainActivity.this,date, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH));
                 dialog.getDatePicker().setMaxDate(new Date().getTime());
                 dialog.show();
             }
         });
+        ///////////////////////////////////////////////End OF DataPicker///////////////////////////////////////////////////
+
 
         //Exit Button
         exitBtn = findViewById(R.id.btnExit);
@@ -204,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(1);
             }
         });
+        ///////////////////////////////////////////////End OF Exit Buttons///////////////////////////////////////////////////
+
 
         //Reset Button
         resetBtn = findViewById(R.id.btnReset);
@@ -230,9 +253,13 @@ public class MainActivity extends AppCompatActivity {
                 genderRadioGroup.clearCheck();
             }
         });
+        ///////////////////////////////////////////////End OF Reset Buttons///////////////////////////////////////////////////
+
+
 
         submitBtn = findViewById(R.id.btnSubmit);
-        submitBtn.setOnClickListener(new View.OnClickListener() {
+             submitBtn.setOnClickListener(new View.OnClickListener() {
+            // Submit buttons initializing all the things to get the output when it clicked./////////////////////////
             @Override
             public void onClick(View view) {
                 String id = studentIdField.getText().toString();
@@ -285,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
                 SpannableStringBuilder nameBuilder = updateString(studentNameField.getHint().toString() + ": ", name);
                 SpannableStringBuilder surnameBuilder = updateString(studentLastNameField.getHint().toString() + ": ", surname);
                 SpannableStringBuilder birthdateBuilder = updateString(dateField.getHint().toString() + ": ", birthDate);
-                SpannableStringBuilder birthPlaceBuilder = updateString(studentNameField.getHint().toString() + ": ", cityFromPlateNum);
+                SpannableStringBuilder birthPlaceBuilder = updateString(birthPlaceTxt.getText().toString() + ": ", cityFromPlateNum);
                 SpannableStringBuilder genderBuilder = updateString(genderTxt.getText().toString() + ": " , getGender());
                 SpannableStringBuilder facultyBuilder = updateString(facultyTxt.getText().toString() + ": " , faculty);
                 SpannableStringBuilder departmentBuilder = updateString(departmentTxt.getText().toString() + ": " , department);
@@ -322,6 +349,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    ///////////////////////////////////////////////End OF Submit Buttons///////////////////////////////////////////////////
+
 
     //gets the selected gender text
     private String getGender() {
@@ -336,6 +365,9 @@ public class MainActivity extends AppCompatActivity {
 
         return gender;
     }
+    ///////////////////////////////////////////////End OF Gender Text//////////////////////////////////////////////////////
+
+
 
     //gets the selected scholarship text
     private String getScholarship() {
@@ -353,8 +385,10 @@ public class MainActivity extends AppCompatActivity {
 
         return scholarship;
     }
+    ///////////////////////////////////////////////End OF ScholarShip///////////////////////////////////////////////////
 
-    //creates half bold text half colored text
+
+    //creates half bold text half colored text for the output half red and half black
     private SpannableStringBuilder updateString(String boldTxt, String normalTxt) {
         SpannableStringBuilder boldStr = new SpannableStringBuilder(boldTxt);
         boldStr.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, boldTxt.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -363,6 +397,8 @@ public class MainActivity extends AppCompatActivity {
         SpannableStringBuilder str = boldStr.append(colorStr);
         return str;
     }
+    ///////////////////////////////////////////////End OF Text Bold///////////////////////////////////////////////////
+
 
     //Updating Calender Function
     private void updateLabel(){
@@ -370,4 +406,6 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.ENGLISH);
         dateField.setText(dateFormat.format(myCalendar.getTime()));
     }
+    ///////////////////////////////////////////////End OFCalender///////////////////////////////////////////////////
+
 }
