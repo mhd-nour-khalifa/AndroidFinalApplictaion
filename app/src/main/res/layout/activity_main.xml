@@ -40,6 +40,7 @@
             android:textAlignment="center"
             android:inputType="number"
             android:digits="0123456789"
+            android:textStyle="bold|italic"
             android:maxLength="11"
             android:hint="@string/studentId_hint" />
 
@@ -52,6 +53,7 @@
             android:backgroundTint="#606060"
             android:textColor="#0E0D0D"
             android:textAlignment="center"
+            android:textStyle="bold|italic"
             android:hint="@string/studentName_hint" />
 
         <EditText
@@ -63,6 +65,7 @@
             android:textColor="#0E0D0D"
             android:backgroundTint="#606060"
             android:textAlignment="center"
+            android:textStyle="bold|italic"
             android:hint="@string/studentSurname_hint" />
 
         <!-- Students Date code for signal touch edit text date picker enable when click -->
@@ -79,6 +82,7 @@
             android:clickable="false"
             android:cursorVisible="false"
             android:focusable="false"
+            android:textStyle="bold|italic"
             android:focusableInTouchMode="false" />
 
         <TextView
@@ -89,6 +93,7 @@
             android:background="@drawable/rounded_corner"
             android:text="@string/birthPlace_hint"
             android:textColor="#063478"
+            android:textStyle="bold|italic"
             android:textSize="16sp" />
 
         <!-- spinner For Birth Place -->
@@ -109,6 +114,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_corner"
             android:text="@string/gender_hint"
+            android:textStyle="bold|italic"
             android:textColor="#000788"
             android:textSize="16sp" />
 
@@ -146,6 +152,7 @@
             android:text="@string/faculty_hint"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
+            android:textStyle="bold|italic"
             android:background="@drawable/rounded_corner"
             android:id="@+id/facultyHint"
             android:textColor="#000788" />
@@ -166,6 +173,7 @@
             android:text="@string/department_hint"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
+            android:textStyle="bold|italic"
             android:background="@drawable/rounded_corner"
             android:id="@+id/departmentHint"
             android:textColor="#000788" />
@@ -185,6 +193,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/StudentGpa_txt"
             android:background="@drawable/rounded_corner"
+            android:textStyle="bold|italic"
             android:textColor="#000788"
             android:textSize="16sp"
             android:translationY="-10dp" />
@@ -198,6 +207,7 @@
             android:hint="@string/studentGPA_hint"
             android:inputType="numberDecimal"
             android:textAlignment="center"
+            android:textStyle="bold|italic"
             android:textColor="#0E0D0D"
             android:textSize="18sp"
             android:translationY="-28dp" />
@@ -208,6 +218,7 @@
             android:layout_marginTop="20dp"
             android:id="@+id/scholarshipHint"
             android:textSize="16sp"
+            android:textStyle="bold|italic"
             android:text="@string/scholarship_hint"
             android:background="@drawable/rounded_corner"
             android:textColor="#000788" />
@@ -264,15 +275,29 @@
             android:backgroundTint="#606060"
             android:textColor="#0E0D0D"
             android:textAlignment="center"
+            android:textStyle="bold|italic"
             android:textSize="18sp"
             android:visibility="invisible"
             android:hint="@string/additionalInfo_hint"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:text="Submitted Information"
+            android:textColor="#3F51B5"
+            android:textSize="20dp"
+
+            android:textStyle="bold|italic"
+            android:translationX="90dp"
+            android:translationY="-5dp" />
 
         <TextView
             android:id="@+id/submission"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#606060"
+            android:textStyle="bold|italic"
             android:textAlignment="center"
             android:textSize="18sp"
             android:visibility="invisible" />
@@ -290,7 +315,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_height="39dp"
                 android:textSize="16sp"
-                android:backgroundTint="#2196F3"
+                android:backgroundTint="#748898"
                 android:text="@string/buttonSubmit_hint" />
 
             <Button
@@ -299,7 +324,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_height="39dp"
                 android:textSize="16sp"
-                android:backgroundTint="#2196F3"
+                android:backgroundTint="#748898"
                 android:text="@string/buttonReset_hint" />
 
             <Button
@@ -308,7 +333,7 @@
                 android:layout_height="39dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
-                android:backgroundTint="#2196F3"
+                android:backgroundTint="#748898"
                 android:text="@string/buttonExit_hint" />
         </TableRow>
 

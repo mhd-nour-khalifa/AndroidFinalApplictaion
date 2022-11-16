@@ -27,9 +27,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.time.format.TextStyle;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -252,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 additionInfoField.setText("");
 
                 facultySpinner.setSelection(0);
+                departmentSpinner.setSelection(0);
                 birthPlaceSpinner.setSelection(0);
 
                 additionalReqCheckBox.setChecked(false);

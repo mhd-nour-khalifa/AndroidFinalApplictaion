@@ -6,7 +6,7 @@
         android:color="#818188" />
 
     <solid android:color="#BDBABA" />
-
+    <solid android:textStyle="bold|italic"></solid>
     <padding
         android:left="1dp"
         android:right="1dp"
